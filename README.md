@@ -9,3 +9,4 @@ This project is an unfinished project. The product does not generate an HTML pag
 Also, the code still needs refactoring to improve the overall functionality of the app.
 
 ## VIDEO
+https://www.dropbox.com/s/ssg08pj1yn4tp8r/teamProfile-generator.mp4?dl=0
