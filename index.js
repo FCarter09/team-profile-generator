@@ -4,6 +4,9 @@ const inquirer = require('inquirer');
 // file that uses fs to write output to an html file
 const {writeFile, copyFile} = require('./utils/generate-page');
 
+//receives page-template
+const generatePage = require('./src/page-template');
+
 
 // import Classes of Employees
 const Manager = require('./lib/Manager')
