@@ -13,11 +13,14 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
-//finalHTML will store all HTML of the employees in the company
-// this is an accumulator variable. Instead of accumulating numbers it accumulates text (strings)
-const finalHTML = ''
+
 
 const askQuestions = () => {
+
+    //finalHTML will store all HTML of the employees in the company
+    // this is an accumulator variable. Instead of accumulating numbers it accumulates text (strings)
+    let finalHTML = ''
+
     // ask what type of employee to create
     inquirer.prompt({
         type: 'list', 
@@ -31,81 +34,142 @@ const askQuestions = () => {
         //if the user chooses to create a manager...
         // the only info we need to create ANY employee type is the name of the employee
         if (userChoice.employeeType === 'Manager') {
-            inquirer.prompt({
+            inquirer.prompt([
+              {
                 type: 'input',
-                message: 'What is the name of the Manager?',
-                name: 'managerName'
-            })
-            .then((userChoice) => {
+                name: 'name',
+                message: 'What is the name of the manager?',
+                
+              },
+              {
+                type: 'input',
+                name: 'id',
+                message: "What is the manager's employee ID?"
+              },
+              {
+                type: 'input',
+                name: 'email',
+                message: "What is the manager's email address?"
+              },
+              {
+                type: 'input',
+                name: 'officeNumber',
+                message: "What is the manager's office number?"
+              }
+
+            ])
+            .then((userChoices) => {
                 // create new Manager
-                const newManager =  new Manager(userChoice.managerName)
-                console.log('New Manager information: ', newManager)
-                // To DO: add this new manager to HTML
-                // make the html for this manager here
-                const managerHTML = `
-                <p>${newManager.name}</p>
-                <p>${newManager.email}</p>
-                `
-                // add managerHTML to the finalHTML
-                finalHTML += managerHTML
+                const newManager =  new Manager(userChoices.name, userChoices.email, userChoices.id, userChoices.officeNumber)
+                console.log('New Manager information:', newManager)
+
+                // get createManagerHTMLCard from page-template.js and store as variable 'managerData'
+                const managerData = generatePage.createManagerHTMLCard(newManager)
+
+                // add managerData to the finalHTML
+                finalHTML += managerData
+
+                // callback askQuestions() to return user back to questions
+                askQuestions();
             })
         } else if (userChoice.employeeType === 'Engineer') {
-            inquirer.prompt({
+            inquirer.prompt([
+                {
                 type: 'input',
                 message: 'What is the name of the Engineer?',
-                name: 'engineerName'
-            })
-            .then((userChoice) => {
+                name: 'name'
+                },
+                {
+                    type: 'input',
+                    name: 'id',
+                    message: "What is the engineer's employee ID?"
+                  },
+                  {
+                    type: 'input',
+                    name: 'email',
+                    message: "What is the engineer's email address?"
+                  },
+                  {
+                    type: 'input',
+                    name: 'github',
+                    message: "What is the engineer's github?"
+                  }
+
+            ])
+            .then((userChoices) => {
                 //create new Engineer
-                const newEngineer = new Engineer(userChoice.engineerName)
+                const newEngineer = new Engineer(userChoices.name, userChoices.email, userChoices.id, userChoices.github)
                 console.log('New Engineer Information: ', newEngineer)
-                // TO DO: add this new engineer to HTML
-                // make the html for this engineer here
-                const engineerHTML = `
-                <p>${newEngineer.name}</p>
-                <p>${newEngineer.email}</p>
-                `
+                
+                // get createEngineerHTMLCard from page-template.js and store as variable 'engineerData'
+                const engineerData = generatePage.createEngineerHTMLCard(newEngineer)
 
-                // add engineer HTML to the finalHTML
-                finalHTML += engineerHTML
-
+                // add engineerData to the finalHTML
+                finalHTML += engineerData
+                
+                // callback askQuestions() to return user back to questions
+                askQuestions();
+    
             })
         } else if (userChoice.employeeType === 'Intern') { ///intern
-            inquirer.prompt({
+            inquirer.prompt([
+                {
                 type: 'input',
-                message: 'What is the name of the Intern?',
-                name: 'internName'
-            })
-            .then((userChoice) => {
+                message: 'What is the name of the intern?',
+                name: 'name'
+                },
+                {
+                    type: 'input',
+                    name: 'id',
+                    message: "What is the intern's employee ID?"
+                  },
+                  {
+                    type: 'input',
+                    name: 'email',
+                    message: "What is the intern's email address?"
+                  },
+                  {
+                    type: 'input',
+                    name: 'school',
+                    message: "What is the intern's school?"
+                  }
+
+            ])
+            .then((userChoices) => {
                 //create new Intern
-                const newIntern = new Intern(userChoice.internName)
+                const newIntern = new Intern(userChoices.name, userChoices.email, userChoices.id, userChoices.school)
                 console.log('New Intern Information: ', newIntern);
-                // TO DO: add this new Intern to HTML
-                // make the html for this intern here
-
-                const internHTML = `
-                <p>${newIntern.name}</p>
-                <p>${newIntern.email}</p>
-                `
-
-                // add engineer HTML to the finalHTML
-                finalHTML += internHTML
                 
+                // get createInternHTMLCard from page-template.js and store as variable 'internData'
+                const internData = generatePage.createInternHTMLCard(newIntern)
+
+                // add internData to the finalHTML
+                finalHTML += internData    
 
             })
 
         }
     })
+
+        // after you ask all the questions you have final html
+        // create final HTML files using finalHTML variable
+        // use html template from page-template.js
+        
+
+    
 }
 
 
 //after asking all questions, use fs to write output to an html file
 // you will write finalHTML to an output file called 'generate-page' in utils folder
+ askQuestions()
 
 
-askQuestions()
 
-    // NOTE: Commented code below causes inquire prompts to exit after asking first question
+
+
+
+    // NOTE: Commented code below could possibly be used to execute app in asynchronous order using '.then' promises
 
     // .then(pageHTML => {
     //     return writeFile(pageHTML);
