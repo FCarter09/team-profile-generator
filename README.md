@@ -11,3 +11,6 @@ Below is an 'MVP' video demostration of how the app is used.
 
 ## VIDEO
 https://www.dropbox.com/s/ssg08pj1yn4tp8r/teamProfile-generator.mp4?dl=0
+
+## LINK
+https://fcarter09.github.io/team-profile-generator/
