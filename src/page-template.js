@@ -1,13 +1,13 @@
 
 const createManagerHTMLCard = (manager) => {
     const managerHTML = `
-    <div class="managers-card">
-        <h3 class='employee-name'>${manager.name}</h3>
-        <h4>${manager.role}</h4>
-        <p><span>ID:</span>${manager.id}</p>
-        <p><span>Email:</span><a href="mailto:${manager.email}">${manager.email}</a></p>
-        <p><span>Office Number:</span>${manager.officeNumber}</p>
-    </div>
+        <div class="managers-card">
+            <h3 class='employee-name'>${manager.name}</h3>
+            <h4>${manager.role}</h4>
+            <p><span>ID:</span>${manager.id}</p>
+            <p><span>Email:</span><a href="mailto:${manager.email}">${manager.email}</a></p>
+            <p><span>Office Number:</span>${manager.officeNumber}</p>
+        </div>
     `
     return managerHTML
 }
@@ -15,13 +15,13 @@ const createManagerHTMLCard = (manager) => {
 //Create engineer html card
 const createEngineerHTMLCard = (engineer) => {
     const engineerHTML = `
-    <div class="engineers-card">
-        <h3 class='employee-name'>${engineer.name}</h3>
-        <h4>${engineer.role}</h4>
-        <p><span>ID:</span>${engineer.id}</p>
-        <p><span>Email:</span><a href="mailto:${engineer.email}">${engineer.email}</a></p>
-        <p><span>Github:</span><a href="https://github.com/${engineer.github}">Github Profile</a></p>
-    </div>
+        <div class="engineers-card">
+            <h3 class='employee-name'>${engineer.name}</h3>
+            <h4>${engineer.role}</h4>
+            <p><span>ID:</span>${engineer.id}</p>
+            <p><span>Email:</span><a href="mailto:${engineer.email}">${engineer.email}</a></p>
+            <p><span>Github:</span><a href="https://github.com/${engineer.github}">Github Profile</a></p>
+        </div>
     `
     return engineerHTML
 }
@@ -29,13 +29,13 @@ const createEngineerHTMLCard = (engineer) => {
 // Create intern html card
 const createInternHTMLCard = (intern) => {
     const internHTML = `
-    <div class="interns-card">
-        <h3 class='employee-name'>${intern.name}</h3>
-        <h4>${intern.role}</h4>
-        <p><span>ID:</span>${intern.id}</p>
-        <p><span>Email:</span><a href="mailto:${intern.email}">${intern.email}</a></p>
-        <p><span>School:</span>${intern.school}</p>
-    </div>
+        <div class="interns-card">
+            <h3 class='employee-name'>${intern.name}</h3>
+            <h4>${intern.role}</h4>
+            <p><span>ID:</span>${intern.id}</p>
+            <p><span>Email:</span><a href="mailto:${intern.email}">${intern.email}</a></p>
+            <p><span>School:</span>${intern.school}</p>
+        </div>
     `
     return internHTML
 }

@@ -1,5 +1,5 @@
 // receives inquire file
-const inquirer = require('inquirer');
+const inquirer = require('inquirer');  
 
 
 //receives page-template
@@ -71,7 +71,7 @@ const askQuestions = () => {
                 const managerData = generatePage.createManagerHTMLCard(newManager)
 
                 // add managerData to the finalHTML
-                managerHTML += managerData
+                managerHTML = managerData
 
                 // console.log('Manager HTML:', managerHTML);
 
@@ -117,7 +117,7 @@ const askQuestions = () => {
                 const engineerData = generatePage.createEngineerHTMLCard(newEngineer)
 
                 // add engineerData to the finalHTML
-                engineerHTML += engineerData
+                engineerHTML = engineerData
 
                 // console.log('Engineer HTML:', engineerHTML)
 
@@ -162,7 +162,7 @@ const askQuestions = () => {
                 const internData = generatePage.createInternHTMLCard(newIntern)
 
                 // add internData to the finalHTML
-                internHTML += internData  
+                internHTML = internData  
                 
                 // console.log('Intern HTML:', internHTML)
                 
