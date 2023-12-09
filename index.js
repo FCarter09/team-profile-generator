@@ -190,7 +190,7 @@ const askQuestions = () => {
 
               //after asking all questions, use fs to write output to an html file
               // fs.writeFile creates finalHTML after 'exit' is selected
-              fs.writeFile('./dist/TeamProfile.html', generatedHTML, (error) =>
+              fs.writeFile('./dist/index.html', generatedHTML, (error) =>
                 error ? console.log('Error!') : console.log(`Output written to file: TeamProfile.html`));  //error handling is a required argument
 
               // fs copyFile copies styles.css from 'src' folder to styles.css in 'dist' folder 
